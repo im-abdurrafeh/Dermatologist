@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermatologist | Diagnostic Scanner</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="detector-page">
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-microscope"></i>
+                <span>Dermatologist</span>
+            </div>
+            <a href="index.html" class="nav-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <header class="app-header small-header">
+        <h2>Diagnostic Scanner</h2>
+        <p class="subtitle" style="font-size: 14px; margin-top: 5px;">Upload a macroscopic skin image for analysis</p>
+    </header>
+
+    <div class="scanner-wrapper">
+        <main class="app-content">
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <div id="dropZoneContent">
+                        <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                        <h3>Upload Skin Image</h3>
+                        <p>Drag and drop or click to browse</p>
+                        <span class="file-hint">Supports JPG, PNG (Max 5MB)</span>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <img id="imagePreview" alt="Skin Preview" src="" hidden>
+                </div>
+                
+                <button id="predictBtn" disabled>
+                    <i class="fa-solid fa-microscope"></i> Analyze Image
+                </button>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing visual features with EfficientNetB3...</p>
+            </div>
+
+            <div id="resultContainer" class="hidden">
+                <div class="result-card primary-result">
+                    <h3>Primary Detection</h3>
+                    <div class="prediction-highlight">
+                        <span id="mainPrediction"></span>
+                        <div class="confidence-badge">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <span id="mainConfidence"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-card breakdown-result">
+                    <h3>Differential Diagnosis</h3>
+                    <p class="breakdown-subtitle">Probability breakdown across all learned conditions</p>
+                    <div id="breakdownList" class="breakdown-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="full-footer">
+        <div class="footer-container">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p><strong>Medical Disclaimer:</strong> Dermatologist is an experimental AI diagnostic tool. Predictions are for informational purposes only and do not constitute professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
